@@ -2,6 +2,7 @@ package org.alvarx4z.chapters.c02;
 
 import org.alvarx4z.exceptions.InvalidHourNumberException;
 import org.alvarx4z.exceptions.InvalidMinuteNumberException;
+import org.alvarx4z.exceptions.InvalidSecondNumberException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ class TimeTest {
     private static final int TEN = 10;
     private static final int TWENTY = 20;
     private static final int THIRTY = 30;
+    private static final int SIXTY_TWO = 62;
 
     @Test
     @DisplayName("Should calculate in seconds a given passed time since the previous midnight")
@@ -36,12 +38,22 @@ class TimeTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {MINUS_TWO, 62})
+    @ValueSource(ints = {MINUS_TWO, SIXTY_TWO})
     @DisplayName("Should throw InvalidMinuteNumberException if the given minute number is invalid")
     void throwInvalidMinuteNumberException(int minute) {
         Assertions.assertThrows(
             InvalidMinuteNumberException.class,
             () -> Time.calculatePassedTimeSinceMidnight(TEN, minute, THIRTY)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {MINUS_TWO, SIXTY_TWO})
+    @DisplayName("Should throw InvalidSecondNumberException if the given second number is invalid")
+    void throwInvalidSecondNumberException(int second) {
+        Assertions.assertThrows(
+            InvalidSecondNumberException.class,
+            () -> Time.calculatePassedTimeSinceMidnight(TEN, TWENTY, second)
         );
     }
 }
