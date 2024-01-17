@@ -1,8 +1,16 @@
 package org.alvarx4z.chapters.c02;
 
+import org.alvarx4z.exceptions.InvalidHourNumberException;
+import org.alvarx4z.exceptions.InvalidMinuteNumberException;
+import org.alvarx4z.exceptions.InvalidSecondNumberException;
+
 public class Time {
 
     static final int SECONDS_IN_A_DAY = 24 * 60 * 60;
+    static final int ZERO = 0;
+    static final int TWENTY_THREE = 23;
+    static final int FIFTY_NINE = 59;
+    static final int SIXTY = 60;
 
     public static void exercise3() {
         final int hour = 15, minute = 8, second = 30;
@@ -18,10 +26,28 @@ public class Time {
     }
 
     static int calculatePassedTimeSinceMidnight(int hour, int minute, int second) {
-        return (hour * 3600) + (minute * 60) + second;
+        checkHourNumber(hour);
+        checkMinuteAndSecondNumbers(minute, second);
+        return (hour * SIXTY * SIXTY) + (minute * SIXTY) + second;
     }
 
     static int calculateRemainingTimeUntilMidnight(int passedSeconds) {
         return SECONDS_IN_A_DAY - passedSeconds;
+    }
+
+    private static void checkHourNumber(int hour) {
+        if (hour < ZERO || hour > TWENTY_THREE) {
+            throw new InvalidHourNumberException();
+        }
+    }
+
+    private static void checkMinuteAndSecondNumbers(int minute, int second) {
+        if (minute < ZERO || minute > FIFTY_NINE) {
+            throw new InvalidMinuteNumberException();
+        }
+
+        if (second < ZERO || second > FIFTY_NINE) {
+            throw new InvalidSecondNumberException();
+        }
     }
 }
