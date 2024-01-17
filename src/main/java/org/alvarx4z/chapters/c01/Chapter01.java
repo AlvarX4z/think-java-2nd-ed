@@ -1,4 +1,4 @@
-package org.alvarx4z.chapters;
+package org.alvarx4z.chapters.c01;
 
 public class Chapter01 {
     public static void exercise2() {
