@@ -11,10 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TimeTest {
 
+    private static final int TEN = 10;
+    private static final int TWENTY = 20;
+    private static final int THIRTY = 30;
+
     @Test
     @DisplayName("Should calculate in seconds a given passed time since the previous midnight")
     void calculatePassedTimeSinceMidnight() {
-        final int response = Time.calculatePassedTimeSinceMidnight(10, 20, 30);
+        final int response = Time.calculatePassedTimeSinceMidnight(TEN, TWENTY, THIRTY);
 
         assertThat(response).isBetween(Time.ZERO, Time.SECONDS_IN_A_DAY);
     }
@@ -25,7 +29,7 @@ class TimeTest {
     void throwInvalidHourNumberException(int hour) {
         Assertions.assertThrows(
             InvalidHourNumberException.class,
-            () -> Time.calculatePassedTimeSinceMidnight(hour, 20, 30)
+            () -> Time.calculatePassedTimeSinceMidnight(hour, TWENTY, THIRTY)
         );
     }
 }
