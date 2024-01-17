@@ -1,7 +1,9 @@
 package org.alvarx4z;
 
+import org.alvarx4z.chapters.Chapter01;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.printf("Hello and welcome!");
+        Chapter01.exercise2();
     }
 }
