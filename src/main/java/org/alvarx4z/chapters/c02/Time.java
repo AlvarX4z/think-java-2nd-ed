@@ -6,11 +6,11 @@ import org.alvarx4z.exceptions.InvalidSecondNumberException;
 
 public class Time {
 
-    static final int SECONDS_IN_A_DAY = 24 * 60 * 60;
     static final int ZERO = 0;
     static final int TWENTY_THREE = 23;
     static final int FIFTY_NINE = 59;
     static final int SIXTY = 60;
+    static final int SECONDS_IN_A_DAY = 24 * SIXTY * SIXTY;
 
     public static void exercise3() {
         final int hour = 15, minute = 8, second = 30;
