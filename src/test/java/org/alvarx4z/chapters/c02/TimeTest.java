@@ -12,6 +12,6 @@ class TimeTest {
     void calculatePassedTimeSinceMidnight() {
         final int response = Time.calculatePassedTimeSinceMidnight(10, 20, 30);
 
-        assertThat(response).isBetween(0, Time.SECONDS_IN_A_DAY);
+        assertThat(response).isBetween(Time.ZERO, Time.SECONDS_IN_A_DAY);
     }
 }
