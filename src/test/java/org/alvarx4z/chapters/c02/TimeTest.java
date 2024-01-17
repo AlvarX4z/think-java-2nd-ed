@@ -1,6 +1,7 @@
 package org.alvarx4z.chapters.c02;
 
 import org.alvarx4z.exceptions.InvalidHourNumberException;
+import org.alvarx4z.exceptions.InvalidMinuteNumberException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TimeTest {
 
+    private static final int MINUS_TWO = -2;
     private static final int TEN = 10;
     private static final int TWENTY = 20;
     private static final int THIRTY = 30;
@@ -24,12 +26,22 @@ class TimeTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-2, 25})
+    @ValueSource(ints = {MINUS_TWO, 25})
     @DisplayName("Should throw InvalidHourNumberException if the given hour number is invalid")
     void throwInvalidHourNumberException(int hour) {
         Assertions.assertThrows(
             InvalidHourNumberException.class,
             () -> Time.calculatePassedTimeSinceMidnight(hour, TWENTY, THIRTY)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {MINUS_TWO, 62})
+    @DisplayName("Should throw InvalidMinuteNumberException if the given minute number is invalid")
+    void throwInvalidMinuteNumberException(int minute) {
+        Assertions.assertThrows(
+            InvalidMinuteNumberException.class,
+            () -> Time.calculatePassedTimeSinceMidnight(TEN, minute, THIRTY)
         );
     }
 }
