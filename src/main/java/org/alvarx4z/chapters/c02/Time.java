@@ -5,6 +5,8 @@ import org.alvarx4z.exceptions.InvalidMinuteNumberException;
 import org.alvarx4z.exceptions.InvalidSecondNumberException;
 import org.alvarx4z.exceptions.InvalidSecondsInADayException;
 
+import java.time.LocalDateTime;
+
 public final class Time {
 
     static final int ZERO = 0;
@@ -14,7 +16,8 @@ public final class Time {
     static final int SECONDS_IN_A_DAY = 24 * SIXTY * SIXTY;
 
     public static void exercise3() {
-        final int hour = 15, minute = 8, second = 30;
+        final LocalDateTime now = LocalDateTime.now();
+        final int hour = now.getHour(), minute = now.getMinute(), second = now.getSecond();
         final int passedSecondsSinceMidnight = calculatePassedTimeSinceMidnight(hour, minute, second);
         final int remainingSecondsUntilMidnight = calculateRemainingTimeUntilMidnight(passedSecondsSinceMidnight);
         final float percentageTimePassedSinceMidnight =
