@@ -27,8 +27,8 @@ public class Time {
     }
 
     static int calculatePassedTimeSinceMidnight(int hour, int minute, int second) {
-        checkHourNumber(hour);
-        checkMinuteAndSecondNumbers(minute, second);
+        checkHourValue(hour);
+        checkMinuteAndSecondValues(minute, second);
         return (hour * SIXTY * SIXTY) + (minute * SIXTY) + second;
     }
 
@@ -37,13 +37,13 @@ public class Time {
         return SECONDS_IN_A_DAY - passedSeconds;
     }
 
-    private static void checkHourNumber(int hour) {
+    private static void checkHourValue(int hour) {
         if (hour < ZERO || hour > TWENTY_THREE) {
             throw new InvalidHourNumberException();
         }
     }
 
-    private static void checkMinuteAndSecondNumbers(int minute, int second) {
+    private static void checkMinuteAndSecondValues(int minute, int second) {
         if (minute < ZERO || minute > FIFTY_NINE) {
             throw new InvalidMinuteNumberException();
         }
