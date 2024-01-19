@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.alvarx4z.chapters.c02.Time.SECONDS_IN_A_DAY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -25,7 +26,7 @@ class TimeTest {
     void calculatePassedTimeSinceMidnight() {
         final int response = Time.calculatePassedTimeSinceMidnight(TEN, TWENTY, THIRTY);
 
-        assertThat(response).isBetween(Time.ZERO, Time.SECONDS_IN_A_DAY);
+        assertThat(response).isBetween(Time.ZERO, SECONDS_IN_A_DAY);
     }
 
     @Test
@@ -33,7 +34,7 @@ class TimeTest {
     void calculateRemainingTimeUntilMidnight() {
         final int response = Time.calculateRemainingTimeUntilMidnight(TWENTY);
 
-        assertThat(response).isEqualTo(Time.SECONDS_IN_A_DAY - TWENTY);
+        assertThat(response).isEqualTo(SECONDS_IN_A_DAY - TWENTY);
     }
 
     @ParameterizedTest
@@ -67,7 +68,7 @@ class TimeTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {MINUS_TWO, Time.SECONDS_IN_A_DAY + SIXTY_TWO})
+    @ValueSource(ints = {MINUS_TWO, SECONDS_IN_A_DAY + SIXTY_TWO})
     @DisplayName("Should throw InvalidSecondsInADayException if the given seconds number is invalid")
     void throwInvalidSecondsInADayException(int seconds) {
         assertThrows(
