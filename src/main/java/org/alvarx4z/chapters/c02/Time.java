@@ -3,6 +3,7 @@ package org.alvarx4z.chapters.c02;
 import org.alvarx4z.exceptions.InvalidHourNumberException;
 import org.alvarx4z.exceptions.InvalidMinuteNumberException;
 import org.alvarx4z.exceptions.InvalidSecondNumberException;
+import org.alvarx4z.exceptions.InvalidSecondsInADayException;
 
 public class Time {
 
@@ -32,6 +33,7 @@ public class Time {
     }
 
     static int calculateRemainingTimeUntilMidnight(int passedSeconds) {
+        checkSecondsInADay(passedSeconds);
         return SECONDS_IN_A_DAY - passedSeconds;
     }
 
@@ -48,6 +50,12 @@ public class Time {
 
         if (second < ZERO || second > FIFTY_NINE) {
             throw new InvalidSecondNumberException();
+        }
+    }
+
+    private static void checkSecondsInADay(int seconds) {
+        if (seconds < 0 || seconds > SECONDS_IN_A_DAY) {
+            throw new InvalidSecondsInADayException();
         }
     }
 }
