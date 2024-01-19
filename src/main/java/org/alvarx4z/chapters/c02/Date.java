@@ -1,6 +1,6 @@
 package org.alvarx4z.chapters.c02;
 
-public class Date {
+public final class Date {
 
     public static void exercise2() {
         final String day = "Wednesday", month = "January";

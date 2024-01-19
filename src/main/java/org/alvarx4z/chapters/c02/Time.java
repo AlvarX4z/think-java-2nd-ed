@@ -5,7 +5,7 @@ import org.alvarx4z.exceptions.InvalidMinuteNumberException;
 import org.alvarx4z.exceptions.InvalidSecondNumberException;
 import org.alvarx4z.exceptions.InvalidSecondsInADayException;
 
-public class Time {
+public final class Time {
 
     static final int ZERO = 0;
     static final int TWENTY_THREE = 23;

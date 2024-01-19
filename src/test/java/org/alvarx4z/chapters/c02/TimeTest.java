@@ -14,7 +14,7 @@ import static org.alvarx4z.chapters.c02.Time.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class TimeTest {
+final class TimeTest {
 
     private static final int MINUS_TWO = -2;
     private static final int TEN = 10;
