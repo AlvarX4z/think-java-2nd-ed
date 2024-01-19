@@ -10,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.alvarx4z.chapters.c02.Time.SECONDS_IN_A_DAY;
+import static org.alvarx4z.chapters.c02.Time.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -35,6 +36,15 @@ class TimeTest {
         final int response = Time.calculateRemainingTimeUntilMidnight(TWENTY);
 
         assertThat(response).isEqualTo(SECONDS_IN_A_DAY - TWENTY);
+    }
+
+    @Test
+    @DisplayName("Should calculate the percentage of passed time since midnight")
+    void calculatePercentagePassedTimeSinceMidnight() {
+        final float response = Time.calculatePercentagePassedTimeSinceMidnight(SECONDS_IN_A_DAY / TEN);
+
+        assertThat(response).isBetween((float)ZERO, 100F);
+        assertThat(response).isEqualTo((float)TEN);
     }
 
     @ParameterizedTest

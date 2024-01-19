@@ -17,13 +17,14 @@ public class Time {
         final int hour = 15, minute = 8, second = 30;
         final int passedSecondsSinceMidnight = calculatePassedTimeSinceMidnight(hour, minute, second);
         final int remainingSecondsUntilMidnight = calculateRemainingTimeUntilMidnight(passedSecondsSinceMidnight);
+        final float percentageTimePassedSinceMidnight =
+            calculatePercentagePassedTimeSinceMidnight(passedSecondsSinceMidnight);
 
         System.out.println("\n| EXERCISE 03 |");
         System.out.println("---------------");
         System.out.printf("Time passed since midnight (seconds): %s\n", passedSecondsSinceMidnight);
         System.out.printf("Remaining times until midnight (seconds): %s\n", remainingSecondsUntilMidnight);
-        System.out.printf("Percentage of time passed since midnight: %d\n", 123);
-        System.out.println(passedSecondsSinceMidnight / SECONDS_IN_A_DAY);
+        System.out.printf("Percentage of time passed since midnight: %.2f%%\n", percentageTimePassedSinceMidnight);
     }
 
     static int calculatePassedTimeSinceMidnight(int hour, int minute, int second) {
@@ -35,6 +36,10 @@ public class Time {
     static int calculateRemainingTimeUntilMidnight(int passedSeconds) {
         checkSecondsInADay(passedSeconds);
         return SECONDS_IN_A_DAY - passedSeconds;
+    }
+
+    static float calculatePercentagePassedTimeSinceMidnight(int passedSeconds) {
+        return ((float)passedSeconds / (float)SECONDS_IN_A_DAY) * 100;
     }
 
     private static void checkHourValue(int hour) {
