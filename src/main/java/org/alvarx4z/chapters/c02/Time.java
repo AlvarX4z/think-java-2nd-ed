@@ -42,7 +42,7 @@ public final class Time {
     }
 
     static float calculatePercentagePassedTimeSinceMidnight(int passedSeconds) {
-        return ((float)passedSeconds / (float)SECONDS_IN_A_DAY) * 100;
+        return ((float) passedSeconds / (float) SECONDS_IN_A_DAY) * 100;
     }
 
     private static void checkHourValue(int hour) {

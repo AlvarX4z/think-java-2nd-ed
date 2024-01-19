@@ -43,8 +43,8 @@ final class TimeTest {
     void calculatePercentagePassedTimeSinceMidnight() {
         final float response = Time.calculatePercentagePassedTimeSinceMidnight(SECONDS_IN_A_DAY / TEN);
 
-        assertThat(response).isBetween((float)ZERO, 100F);
-        assertThat(response).isEqualTo((float)TEN);
+        assertThat(response).isBetween((float) ZERO, 100F);
+        assertThat(response).isEqualTo((float) TEN);
     }
 
     @ParameterizedTest
